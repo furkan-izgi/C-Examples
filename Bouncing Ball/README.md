@@ -1,5 +1,7 @@
 # Bouncing Ball Animation
 
+- [ ] TODO: Rewrite with using dynamic allocation and array.
+
 This C program simulates a bouncing ball animation within a specified width and height.
 
 ## Description
