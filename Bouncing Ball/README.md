@@ -1,6 +1,10 @@
 # Bouncing Ball Animation
 
-- [ ] TODO: Rewrite with using dynamic allocation and array.
+- [x] TODO: Rewrite with using dynamic allocation.
+
+> Benchmark Test for **80 Width** and **10,000, 100,000 and 1,000,000 Height** respectively.
+
+![bb_benchmark](https://github.com/furkan-izgi/C-Examples/blob/main/Bouncing%20Ball/bouncing_ball_benchmark.png)
 
 This C program simulates a bouncing ball animation within a specified width and height.
 
@@ -11,7 +15,6 @@ The program prompts the user to enter the desired width and height for the anima
 ## How it Works
 
 1.  **`bounceTheBall(int width, int height)` Function:**
-    * Takes the width and height of the animation as input.
     * Initializes the ball's position to 0 and its direction to "right" (true).
     * Iterates through each row (height).
     * For each row, it prints a vertical bar (`|`) at the beginning and end.
@@ -22,12 +25,7 @@ The program prompts the user to enter the desired width and height for the anima
 
 2.  **`getInfos()` Function:**
     * Prompts the user to enter the width and height of the animation.
-    * Reads the input using `scanf`.
     * Calls the `bounceTheBall` function to display the animation.
-
-3.  **`main()` Function:**
-    * Calls the `getInfos` function to start the program.
-    * Returns 0 upon successful termination.
 
 ## Compilation and Execution
 
@@ -71,6 +69,7 @@ Width: 6, Height: 15
 ## Dependencies
 
 * Standard C library (`stdio.h`)
+* Standard C library (`stdlib.h`)
 
 ## Notes
 
