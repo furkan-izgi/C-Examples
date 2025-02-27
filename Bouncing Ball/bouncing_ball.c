@@ -1,56 +1,59 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef enum { false, true } bool;
 
-void bounceTheBall(int width, int height){
+void bounceTheBall(int width, int height) {
     
     int position = 0;
-    bool direction = true;  //Right: 1, Left: 0
+    bool direction = true; //For Right(true) and for Left(false)
+
+    char *line = (char *)malloc((width + 3) * sizeof(char)); //Additional 3 ones for '|' (twice) and '/0'
+
+    if(line == NULL){
+        printf("Allocation failed.\n");
+        free(line);
+        return;
+    }
     
-    for (int i = 0; i < height; i++) {
-        
-        printf("|"); //start
-        
-        for (int j = 0; j < width; j++)
-        {
-            if (j != position)
-            {
-                printf(" ");
-            } else {
-                printf("*");
-            }
-            
+    
+    for(int i = 0; i < height; i++) {
+        line[0] = '|';
+
+        for (int j = 1; j < width + 1; j++) {
+            line[j] = (j - 1 == position) ? '*' : ' ';
         }
-        
-        printf("|\n"); //finish
-        
-        if(direction) {
+
+        line[width + 1] = '|';
+        line[width + 2] = '\0';
+
+        printf("%s\n", line);
+
+        if (direction) {
             position += 1;
-            if(position == width - 1) {
-                direction = false;
-            }
+            direction = position == width - 1 ? false : true;
+
         } else {
             position -= 1;
-            if(position == 0) {
-                direction = true;
-            }
+            direction = position == 0 ? true : false;
         }
     }
+
+    free(line);
 }
 
-void getInfos(void){
-    int witdh, height;
+void getInfos(void) {
+    int width, height;
     printf("Width?: ");
-    scanf("%d", &witdh);
+    scanf("%d", &width);
     printf("Height?: ");
     scanf("%d", &height);
 
-    bounceTheBall(witdh, height);
+    bounceTheBall(width, height);
 }
 
 int main(void) {
-    
     getInfos();
-
+    
     return 0;
 }
